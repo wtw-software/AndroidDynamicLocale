@@ -72,7 +72,6 @@
 
     <build>
         <finalName>${project.name}-v${project.version}</finalName>
-        <sourceDirectory>src</sourceDirectory>
 
         <extensions>
             <extension>
