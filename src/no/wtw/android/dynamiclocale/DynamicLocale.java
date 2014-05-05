@@ -2,6 +2,8 @@ package no.wtw.android.dynamiclocale;
 
 import android.content.Context;
 import android.util.Log;
+import no.wtw.android.dynamiclocale.interfaces.DynamicLocalePrefs;
+import no.wtw.android.dynamiclocale.interfaces.DynamicLocalePrefs_;
 import no.wtw.android.dynamiclocale.interfaces.DynamicWord;
 import no.wtw.android.dynamiclocale.interfaces.PersistentWordProvider;
 import org.androidannotations.annotations.AfterInject;
