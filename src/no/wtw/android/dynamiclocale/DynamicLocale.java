@@ -1,10 +1,9 @@
 package no.wtw.android.dynamiclocale;
 
 import android.content.Context;
-import no.wtw.android.dynamiclocale.interfaces.DynamicLocalePrefs_;
+import android.util.Log;
 import no.wtw.android.dynamiclocale.interfaces.DynamicWord;
 import no.wtw.android.dynamiclocale.interfaces.PersistentWordProvider;
-import no.wtw.visitoslo.oslopass.android.utility.Log;
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;

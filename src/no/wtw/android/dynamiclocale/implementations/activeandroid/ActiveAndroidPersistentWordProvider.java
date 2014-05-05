@@ -1,10 +1,10 @@
 package no.wtw.android.dynamiclocale.implementations.activeandroid;
 
+import android.util.Log;
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
 import no.wtw.android.dynamiclocale.interfaces.DynamicWord;
 import no.wtw.android.dynamiclocale.interfaces.PersistentWordProvider;
-import no.wtw.visitoslo.oslopass.android.utility.Log;
 import org.androidannotations.annotations.EBean;
 
 import java.util.ArrayList;
