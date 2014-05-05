@@ -62,12 +62,6 @@
             <groupId>com.activeandroid</groupId>
             <artifactId>activeandroid</artifactId>
             <version>3.1-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.google.android</groupId>
-                    <artifactId>support-v4</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
