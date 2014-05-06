@@ -17,7 +17,7 @@ public class ActiveAndroidPersistentWordProvider implements PersistentWordProvid
 
     @Override
     public List<DynamicWord> getPersistentWords() {
-        ArrayList<DynamicWord> dynamicWords = new ArrayList<>();
+        ArrayList<DynamicWord> dynamicWords = new ArrayList<DynamicWord>();
         List<ActiveAndroidWord> activeAndroidWords = new Select().from(ActiveAndroidWord.class).execute();
         for (ActiveAndroidWord word : activeAndroidWords)
             dynamicWords.add(word);

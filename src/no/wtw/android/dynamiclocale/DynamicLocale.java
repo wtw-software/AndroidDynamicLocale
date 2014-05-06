@@ -41,7 +41,7 @@ public class DynamicLocale {
     }
 
     private void loadDefaultWords() {
-        defaultWords = new HashMap<>();
+        defaultWords = new HashMap<Integer, String>();
         Field[] fields = getStringFields();
         for (Field field : fields) {
             try {
@@ -62,7 +62,7 @@ public class DynamicLocale {
     }
 
     private void loadPersistentWords() {
-        words = new HashMap<>();
+        words = new HashMap<String, String>();
         try {
             if (wordProvider != null) {
                 List<DynamicWord> wordList = wordProvider.getPersistentWords();
