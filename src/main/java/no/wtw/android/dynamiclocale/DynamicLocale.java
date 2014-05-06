@@ -1,43 +1,43 @@
 package no.wtw.android.dynamiclocale;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
-import no.wtw.android.dynamiclocale.interfaces.DynamicLocalePrefs;
-import no.wtw.android.dynamiclocale.interfaces.DynamicLocalePrefs_;
 import no.wtw.android.dynamiclocale.interfaces.DynamicWord;
 import no.wtw.android.dynamiclocale.interfaces.PersistentWordProvider;
-import org.androidannotations.annotations.AfterInject;
-import org.androidannotations.annotations.EBean;
-import org.androidannotations.annotations.RootContext;
-import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-@EBean(scope = EBean.Scope.Singleton)
 public class DynamicLocale {
 
     private static final String TAG = DynamicLocale.class.getSimpleName();
+    private static final String NEEDS_LANGUAGE_UPDATE = "needs_language_update";
+    private final Context context;
     private HashMap<String, String> words;
     private HashMap<Integer, String> defaultWords;
+    private SharedPreferences prefs;
+    private PersistentWordProvider wordProvider;
+    private static DynamicLocale instance;
 
-    @Pref
-    protected DynamicLocalePrefs_ prefs;
-    @RootContext
-    protected Context context;
-    protected PersistentWordProvider wordProvider;
+    public DynamicLocale(Context context) {
+        this.context = context;
+        prefs = context.getSharedPreferences("dynamic_locale", Context.MODE_PRIVATE);
+        loadDefaultWords();
+    }
+
+    public static DynamicLocale getInstance(Context context) {
+        if (instance == null)
+            instance = new DynamicLocale(context);
+        return instance;
+    }
 
     public DynamicLocale setPersistentWordProvider(PersistentWordProvider provider) {
         wordProvider = provider;
         loadPersistentWords();
         return this;
-    }
-
-    @AfterInject
-    protected void init() {
-        loadDefaultWords();
     }
 
     private void loadDefaultWords() {
@@ -74,10 +74,6 @@ public class DynamicLocale {
         }
     }
 
-    public static String _(int resourceId, Context context) {
-        return DynamicLocale_.getInstance_(context)._(resourceId);
-    }
-
     public String _(int resourceId) {
         return getString(resourceId);
     }
@@ -94,18 +90,22 @@ public class DynamicLocale {
         if (newWords.size() == 0)
             return;
         if (wordProvider != null && wordProvider.setPersistentWords(newWords)) {
-            prefs.edit().needsLanguageUpdate().put(false).apply();
+            SharedPreferences.Editor edit = prefs.edit();
+            edit.putBoolean(NEEDS_LANGUAGE_UPDATE, false);
+            edit.commit();
             loadPersistentWords();
         }
     }
 
     public void localeChanged() {
         Log.d(TAG, "Locale changed to " + Locale.getDefault());
-        prefs.edit().needsLanguageUpdate().put(true).apply();
+        SharedPreferences.Editor edit = prefs.edit();
+        edit.putBoolean(NEEDS_LANGUAGE_UPDATE, true);
+        edit.commit();
     }
 
     public boolean needsUpdate() {
-        return prefs.needsLanguageUpdate().get();
+        return prefs.getBoolean(NEEDS_LANGUAGE_UPDATE, true);
     }
 
 }
