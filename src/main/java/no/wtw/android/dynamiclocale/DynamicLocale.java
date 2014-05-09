@@ -78,6 +78,10 @@ public class DynamicLocale {
         return getString(resourceId);
     }
 
+    public static String _(Context context, int resourceId) {
+        return getInstance(context)._(resourceId);
+    }
+
     private String getString(int resourceId) {
         String resourceFieldName = defaultWords.get(resourceId);
         if (words != null && words.containsKey(resourceFieldName))

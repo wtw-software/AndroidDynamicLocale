@@ -7,7 +7,7 @@
     <name>AndroidDynamicLocale</name>
     <groupId>no.wtw.android</groupId>
     <artifactId>dynamic-locale</artifactId>
-    <version>1.3</version>
+    <version>1.4</version>
     <packaging>apklib</packaging>
 
     <scm>
