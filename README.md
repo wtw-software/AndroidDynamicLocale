@@ -15,6 +15,7 @@ Fetch language strings from server and store locally
 ## Usage 
 
 Calls are made statically: ```DynamicLocale._(myContext, R.string.my_string_ref);```
+or on the object:  ```myDynLocale._(R.string.my_string_ref)```;
 
 ## Updating language
 
