@@ -3,13 +3,22 @@ AndroidDynamicLocale
 
 Fetch language strings from server and store locally
 
-```
+[![](https://jitpack.io/v/wtw-software/AndroidDynamicLocale.svg)](https://jitpack.io/#wtw-software/AndroidDynamicLocale)
+
+Download
+--------
+
+Grab via Maven:
+```xml
 <dependency>
   <groupId>no.wtw.android</groupId>
   <artifactId>dynamic-locale</artifactId>
-  <type>apklib</type>
   <version>xxx</version>
 </dependency>
+```
+or Gradle:
+```groovy
+compile 'com.squareup.retrofit2:dynamic-locale:xxx'
 ```
 
 ## Usage 
