@@ -1,6 +1,9 @@
 AndroidDynamicLocale
 ====================
 
+!!DEPRECATED!!
+
+
 Fetch language strings from server and store locally
 
 [![](https://jitpack.io/v/wtw-software/AndroidDynamicLocale.svg)](https://jitpack.io/#wtw-software/AndroidDynamicLocale)
